@@ -1,0 +1,129 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Dropdown
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+        </li>
+      </ul>
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+
+<h1>nav-bar works!</h1>
+
+
+
+<hr>
+<h1 [style.background-color]="isUnchanged? 'green': 'red' ">gggggggggggggg</h1>
+
+<h1 [innerHTML]="isUnchanged? 'green': 'red'   ">gggggggggggggg</h1>
+
+<h1 (load)="ifu()">{{isCollapsed}}</h1>
+
+<hr>
+<input type="text" id="fname" onkeyup="myFunction()">
+<br>
+<hr>
+
+
+<div>
+  <h1>Interpolation and Template Expressions</h1>
+  <hr />
+  <div>
+    <h2>Interpolation</h2>
+    <h3>Current customer: {{ currentCustomer }}</h3>
+    <p>{{ title }}</p>
+    <div><img alt="item" src="{{ itemImageUrl }}"></div>
+    <h3>Evaluating template expressions </h3>
+    <h4>Simple evaluation (to a string):</h4>
+    <!-- "The sum of 1 + 1 is 2" -->
+    <p>The sum of 1 + 1 is {{ 1 + 1 }}.</p>
+    <h4>Evaluates using a method (also evaluates to a string):</h4>
+    <!-- "The sum of 1 + 1 is not 4" -->
+    <p>The sum of 1 + 1 is not {{ 1 + 1 + getVal() }}.</p>
+  </div>
+  <hr />
+  <h2>Expression Context</h2>
+  <div>
+    <h3>Component context, properties of app.component.ts:</h3>
+    <h4>{{ recommended }}</h4>
+    <img alt="item 2" [src]="itemImageUrl2">
+  </div>
+  <div>
+    <h4>Template context, template input variables (let customer):</h4>
+    <ul>
+      @for (customer of customers; track customer) {
+      <li>{{ customer.name }}</li>
+      }
+    </ul>
+  </div>
+  <div (keyup)="0">
+    <h4>Template context: template reference variables (#customerInput):</h4>
+    <label for="customer-input">Type something:
+      <input id="customer-input" #customerInput>{{ customerInput.value }}
+    </label>
+  </div>
+</div>
+@if (isLoggedIn) {
+<p>Welcome back, Friend!</p>
+}
+<section (mouseover)="onMouseOver()">
+  There's a secret message for you, hover to reveal 👀
+  {{ message }}
+</section>
+<label for="framework">
+  Favorite Framework:
+  <input id="framework" type="text" [(ngModel)]="favoriteFramework" />
+</label>
+<p>Username: {{ username }}</p>
+<p>{{ username }}'s favorite framework: {{ favoriteFramework }}</p>
+<label for="framework">Favorite Framework:</label>
+<li>Date with "date" {{ birthday | date:'medium'}}</li>
+<h1 id="two-way">Two-way Binding</h1>
+<div id="two-way-1">
+  <div [style.font-size.px]="fontSizePx">Resizable Text</div>
+  <label for="font-size">FontSize (px): <input id="font-size" [(ngModel)]="fontSizePx"></label>
+</div>
+<br>
+<div id="two-way-2">
+  <h2>De-sugared two-way binding</h2>
+</div>
+<div class="card" style="width: 18rem;">
+  <img src="favicon.ico" class="card-img-top img-thumbnail w-50 h-50 text-center " alt="...">
+  <div class="card-body">
+    <p class="card-text"> of the card's content.</p>
+    <p class="card-text"> of the card's content.</p>
+    <p class="card-text"> of the card's content.</p>
+
+
+  </div>
+</div>

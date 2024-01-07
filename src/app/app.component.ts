@@ -1,14 +1,40 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
+import { Component, HostBinding } from '@angular/core';
+import {
+  trigger,
+  state,
+  style,
+  animate,
+  transition,
+  // ...
+} from '@angular/animations';
+
+import { ChildrenOutletContexts, RouterLink, RouterOutlet } from '@angular/router';
+import { slideInAnimation } from './animations';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
+
 
 @Component({
-  selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  selector: 'app-root',
+  templateUrl: 'app.component.html',
+  styleUrls: ['app.component.scss'],
+  imports: [RouterLink, RouterOutlet,NavBarComponent],
+  animations: [
+    slideInAnimation
+    // animation triggers go here
+  ]
 })
 export class AppComponent {
-  title = 'itsharApp';
+  @HostBinding('@.disabled')
+  public animationsDisabled = false;
+
+  constructor(private contexts: ChildrenOutletContexts) {}
+
+  getRouteAnimationData() {
+    return this.contexts.getContext('primary')?.route?.snapshot?.data?.['animation'];
+  }
+
+  toggleAnimations() {
+    this.animationsDisabled = !this.animationsDisabled;
+  }
 }
